@@ -1,0 +1,22 @@
+1. ini config parser
+   import ConfigParser
+    
+   cf = ConfigParser.ConfigParser()
+   cf.read('file.ini')
+   cf.sections()
+   cf.options('section_name')
+   cf.items('section_item')
+   re = cf.get('section','option')
+   re2 = cf.getint('section','option')
+
+   #write to the config file
+   cf.set('section','option','new_value') 
+   cf.write(open('file.ini','w'))
+
+2. push a commit to github
+   git commit -m 'commit msg' (do add/rm first if have file/dir changed)
+   git push git@github.com:szho42/pythonlearning.git
+
+
+   
+
