@@ -116,3 +116,33 @@
 
    subn() -> return the new string and the number of replacement operations
 
+4. python new keywords
+   apply()
+       apply(function, parameters)
+   lambda
+      lambda i: i*10, [1,2,3] => [10,20,30]
+   __name => private variable
+
+   __getitem__(self,key):
+   __setitem__(self,key,value): 
+       
+5. import vs. __import__
+       import os
+       __import__("os")
+   import py_compile
+   py_compile.compile("e:""User""py""hello.py")
+   import compileall
+   comileall.compile_dir("e:""Users""py")
+
+6. xrange() vs. range()
+   range() -> list
+   xrange() -> iterator(xrange type)
+
+7. .join()
+   ",".join("a","b","c") -> a,b,c
+   "|".join("efg") -> e|f|g
+
+8. 0<i<10 vs. i>0 and i<10
+   |-> better performance
+
+9.     
