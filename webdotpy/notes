@@ -1,0 +1,13 @@
+1. virtualenv
+   set up a virtual environment
+   virtualenv --distribute venv
+   activate a virtual enviornment:#source venv/bin/activiate
+   deactivate a virtual environment: in virtualenv, >>>>deactivate
+
+2. sqlite for protyping
+   eg. CREATE TABLE todo (id integer primary key, title text, created date, done boolean default 'f');
+   insert into todo (title) values ('Learn web.py');
+
+3. web.py support sqlite3. sqlite2.x will not work with the latest web.py.
+
+
