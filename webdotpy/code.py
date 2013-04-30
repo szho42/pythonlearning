@@ -14,6 +14,8 @@ urls = (
     '/ctx', 'ctx',
     '/count', 'count',
     '/reset', 'reset',
+    '/setcookie', 'setcookie',
+    '/getcookie','getcookie',
 )
 
 app = web.application(urls, globals())
@@ -70,6 +72,19 @@ class reset:
     def GET(self):
         session.kill()
 	return ""
+
+class setcookie:
+    def GET(self):
+        web.setcookie('cookie','cookieVal',3600)
+	return "Cookie set up..."
+
+class getcookie:
+    def GET(self):
+        try:
+            return "Cookie value: " + web.cookies().cookie 
+                                  # or web.cookie().get('cookie')
+        except:
+            return "Cookie does not exist"
 
 render = web.template.render('templates/',globals={'session': session})
 
