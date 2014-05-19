@@ -1,5 +1,7 @@
 import web
 import forms
+import hashlib
+import sqlite3
 
 web.config.debug = False
 
@@ -11,6 +13,7 @@ urls = (
     '/', 'index',
     '/add', 'add',
     '/login', 'login',
+    '/logoff', 'logoff',
     '/ctx', 'ctx',
     '/count', 'count',
     '/reset', 'reset',
@@ -55,8 +58,28 @@ class login:
 	if not form.validates():
             return render.formtest(form)
         else:
-            session.username = 'Admin'
-            return "You have logged in!"
+	    i = web.input()
+	    username = i.username
+	    passwd = i.password
+            pwdhash = hashlib.md5(passwd).hexdigest()
+	    authdb = sqlite3.connect('db/db1')
+	    check = authdb.execute('select * from users where username=?\
+			    and password=?',(username,pwdhash))
+            if check:
+                session.loggedin = True
+		session.username = username
+		raise web.seeother('/')
+            else:
+                return render.base('Login failed, please try again!')
+
+class logoff:
+    def GET(self):
+        if session.loggedin:
+            session.loggedin = False
+	    session.username = 'guest'
+	    raise web.seeother('/')
+        else:
+            raise web.seeother('/')
 
 class ctx:
     def GET(self):
