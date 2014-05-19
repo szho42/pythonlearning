@@ -145,4 +145,8 @@
 8. 0<i<10 vs. i>0 and i<10
    |-> better performance
 
-9.     
+9. workspace -> local repository -> remote repository
+         commit/checkout               push/fetch    
+			pull/rebase
+
+
